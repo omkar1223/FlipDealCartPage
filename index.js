@@ -16,13 +16,13 @@ let loyaltyRate = 2; //2 points per $1
 //API 1 -
 
 function totalCartPrice(newItemPrice, cartTotal) {
-  let totalCartPrice = newItemPrice + cartTotal;
+  const totalCartPrice = newItemPrice + cartTotal;
   return totalCartPrice.toString();
 }
 
 app.get('/cart-total', (req, res) => {
-  let newItemPrice = parseFloat(req.query.newItemPrice);
-  let cartTotal = parseFloat(req.query.cartTotal);
+  const newItemPrice = parseFloat(req.query.newItemPrice);
+  const cartTotal = parseFloat(req.query.cartTotal);
 
   res.send(totalCartPrice(newItemPrice, cartTotal));
 });
@@ -40,8 +40,8 @@ function totalCartValue(cartTotal, isMember) {
 }
 
 app.get('/membership-discount', (req, res) => {
-  let cartTotal = parseFloat(req.query.cartTotal);
-  let isMember = req.query.isMember === 'true';
+  const cartTotal = parseFloat(req.query.cartTotal);
+  const isMember = req.query.isMember === 'true';
 
   res.send(totalCartValue(cartTotal, isMember));
 });
