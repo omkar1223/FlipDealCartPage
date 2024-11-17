@@ -6,7 +6,6 @@ const app = express();
 app.use(cors());
 const port = 3000;
 
-app.use(express.static('static'));
 
 // server-side values
 let taxRate = 5; //5 %
