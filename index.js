@@ -66,9 +66,9 @@ function findNoOfDays(shippingMethod, distance) {
   }
 
   let daysTook;
-  if (shippingMethod === 'Standard') {
+  if (shippingMethod === 'standard') {
     daysTook = Math.ceil(distance / 50);
-  } else if (shippingMethod === 'Express') {
+  } else if (shippingMethod === 'express') {
     daysTook = Math.ceil(distance / 100);
   } else {
     res.status(400).send('Please enter valid shipping method');
