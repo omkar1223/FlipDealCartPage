@@ -6,6 +6,7 @@ const app = express();
 app.use(cors());
 const port = 3000;
 
+app.use(express.static('static'));
 
 // server-side values
 let taxRate = 5; //5 %
@@ -14,16 +15,12 @@ let loyaltyRate = 2; //2 points per $1
 
 //API 1 -
 
-function totalCartPrice(newItemPrice, cartTotal) {
-  const totalCartPrice = newItemPrice + cartTotal;
-  return totalCartPrice.toString();
-}
-
 app.get('/cart-total', (req, res) => {
-  const newItemPrice = parseFloat(req.query.newItemPrice);
-  const cartTotal = parseFloat(req.query.cartTotal);
+  let newItemPrice = parseFloat(req.query.newItemPrice);
+  let cartTotal = parseFloat(req.query.cartTotal);
+  let totalCartPrice = newItemPrice + cartTotal;
 
-  res.send(totalCartPrice(newItemPrice, cartTotal));
+  res.send(totalCartPrice.toString());
 });
 
 //API 2 -
