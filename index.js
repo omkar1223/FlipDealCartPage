@@ -15,12 +15,16 @@ let loyaltyRate = 2; //2 points per $1
 
 //API 1 -
 
+function totalCartPrice(newItemPrice, cartTotal) {
+  let totalCartPrice = newItemPrice + cartTotal;
+  return totalCartPrice.toString();
+}
+
 app.get('/cart-total', (req, res) => {
   let newItemPrice = parseFloat(req.query.newItemPrice);
   let cartTotal = parseFloat(req.query.cartTotal);
-  let totalCartPrice = newItemPrice + cartTotal;
 
-  res.send(totalCartPrice.toString());
+  res.send(totalCartPrice(newItemPrice, cartTotal));
 });
 
 //API 2 -
@@ -66,9 +70,9 @@ function findNoOfDays(shippingMethod, distance) {
   }
 
   let daysTook;
-  if (shippingMethod === 'standard') {
+  if (shippingMethod === 'Standard') {
     daysTook = Math.ceil(distance / 50);
-  } else if (shippingMethod === 'express') {
+  } else if (shippingMethod === 'Express') {
     daysTook = Math.ceil(distance / 100);
   } else {
     res.status(400).send('Please enter valid shipping method');
